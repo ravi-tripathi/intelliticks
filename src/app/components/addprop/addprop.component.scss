@@ -1,0 +1,13 @@
+div {
+    display: flex;
+    flex-direction: column;
+    label{
+        width: 300px;
+    }
+    input {
+        width: 300px;
+    }
+    button{
+        width: 200px;
+    }
+}

@@ -1,0 +1,13 @@
+<h1>Properties List</h1>
+<div *ngIf="proplist && proplist.length">
+    <div *ngFor="let property of proplist">
+        <h2>Name: {{property?.name}}</h2><span (click)="deleteProperty(property?.id)">X</span>
+        <p>Description: {{property?.description}}</p>
+        <span>Size: {{property?.size}}</span>
+    </div>
+</div>
+
+<button (click)="addNewProperty()">Add New Property</button>
+<div *ngIf="showaddform">
+    <app-addprop (newPropAddedEvent)='updateView($event)'></app-addprop>
+</div>
