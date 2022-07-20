@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { ProplistComponent } from './components/proplist/proplist.component';
 import { AddpropComponent } from './components/addprop/addprop.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PropertiesService } from './propservice.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -21,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [PropertiesService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

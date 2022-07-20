@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { PropertiesService } from 'src/app/propservice.service';
 
 @Component({
   selector: 'app-proplist',
@@ -11,7 +10,7 @@ export class ProplistComponent implements OnInit, OnDestroy {
   showaddform = false;
   proplist: any =[];
   
-  constructor(private _propservice: PropertiesService) { }
+  constructor() { }
 
   ngOnInit(): void {
     sessionStorage.clear();
