@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Output, EventEmitter } from '@angular/core';
+import { PropertiesService } from 'src/app/propservice.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class AddpropComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _propservice: PropertiesService) { }
   name = new FormControl('');
   description = new FormControl('');
   size = new FormControl('');
@@ -19,24 +20,20 @@ export class AddpropComponent implements OnInit {
   @Output() newPropAddedEvent = new EventEmitter<string>();
 
   ngOnInit(): void {
-    this.proplist =JSON.parse(sessionStorage.getItem('properties') || '[]');
-    console.log(this.proplist);
   }
 
   submitForm() {
-    var data = {
-      id: Math.round(Math.random() * Math.random() * 10000),
+    var data = {fields: {
       name: this.name?.value,
       description: this.description?.value,
       size: this.size?.value
-    };
-    console.log(data);
-    this.proplist = JSON.parse(sessionStorage.getItem('properties') || '[]');
-    console.log(this.proplist);
-    this.proplist.push(data);
-    console.log(this.proplist);
-    sessionStorage.setItem('properties', JSON.stringify(this.proplist));
-    this.newPropAddedEvent.emit(this.proplist);
+    }};
+
+    this._propservice.addNewPropertytoList(data).subscribe(list => {
+      this.proplist = list;
+      this.newPropAddedEvent.emit(this.proplist);
+    });
+    
   }
 
 }

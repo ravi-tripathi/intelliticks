@@ -1,9 +1,9 @@
 <h1>Properties List</h1>
-<div *ngIf="proplist && proplist.length">
-    <div *ngFor="let property of proplist">
-        <h2>Name: {{property?.name}}</h2><span (click)="deleteProperty(property?.id)">X</span>
-        <p>Description: {{property?.description}}</p>
-        <span>Size: {{property?.size}}</span>
+<div *ngIf="proplist && proplist.records">
+    <div *ngFor="let property of proplist.records">
+        <h2>Name: {{property?.fields?.name}}</h2><span (click)="deleteProperty(property?.id)">X</span>
+        <p>Description: {{property?.fields?.description}}</p>
+        <span>Size: {{property?.fields?.size}}</span>
     </div>
 </div>
 
